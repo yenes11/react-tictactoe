@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState'
+import { GlobalContext } from '../../context/GlobalState';
+import './Scoreboard.css';
 
 export const Scoreboard = () => {
   const { scores } = useContext(GlobalContext);

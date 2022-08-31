@@ -1,13 +1,16 @@
-import React, { useState, useContext } from 'react';
-import { Spring, useSpring, animated } from 'react-spring';
-import { Alert } from './Alert';
-import { GlobalContext } from '../context/GlobalState';
+import React, { useState, useContext, useEffect } from 'react';
+import { Alert } from '../alert/Alert';
+import { GlobalContext } from '../../context/GlobalState';
+import './Game.css';
 
 export const Game = () => {
+    const [playGround, setPlayGround] = useState([]);
     const [queue, setQueue] = useState(0);
     const [track, setTrack] = useState([[0,0,0],[0,0,0],[0,0,0]]);
     const { xWon, yWon } = useContext(GlobalContext);
     const [winner, setWinner] = useState('');
+    const [end, setEnd] = useState(false);
+    const [toggleReset, setToggleReset] = useState(false);
     
     const isOver = (l) => {
         var won = true;
@@ -75,15 +78,20 @@ export const Game = () => {
                 x = isOver('x');
                 o = isOver('o');
                 if (x) {
-                    console.log('X Won!');
                     setWinner('X');
                     xWon();
+                    setEnd(prevEnd => !prevEnd);
                     document.querySelector('.play-ground').style.pointerEvents = 'none';
                 }
-                if (o) {
-                    console.log('O Won!');
-                    setWinner('X');
+                else if (o) {
+                    setWinner('O');
                     yWon();
+                    setEnd(prevEnd => !prevEnd);
+                    document.querySelector('.play-ground').style.pointerEvents = 'none';
+                }
+                else if (queue === 8) {
+                    setWinner('TIE');
+                    setEnd(prevEnd => !prevEnd);
                     document.querySelector('.play-ground').style.pointerEvents = 'none';
                 }
             }, 0);
@@ -104,25 +112,28 @@ export const Game = () => {
         children.forEach(element => {
             element.style.backgroundColor = '#FFF';
         });
+        setToggleReset(prevReset => !prevReset);
+        setQueue(0)
     }
     
-    var pg = [];
-    
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            pg.push(<div key={`${i}x${j}`} id={`${i}x${j}`} onClick={place} className='square'></div>);
+    useEffect(() => {
+        var pg = [];
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                pg.push(<div key={`${i}x${j}`} id={`${i}x${j}`} onClick={place} className='square'></div>)
+            }
         }
-    }
-    
-    const props = useSpring({ from: { opacity: 0 }, to: { opacity: 1 } })
-    const AnimatedAlert = animated(Alert);
+        setPlayGround(pg)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [queue])
+
     return (
         <>
             <div className='play-ground'>
-                { pg.map(div => div) }
+                { playGround.map(div => div) }
             </div>
             <button onClick={reset} className='reset'>Reset</button>
-            <AnimatedAlert animation={props} winner={winner}/>
+            <Alert end={end} winner={winner } reset={toggleReset} />
         </>
         )
     }

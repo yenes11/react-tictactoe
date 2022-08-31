@@ -1,0 +1,47 @@
+.scoreboard-container {
+  display: grid;
+  grid-template-columns: repeat(2, 250px);
+  grid-template-rows: 50px 100px;
+  font-family: 'Secular One', sans-serif;
+  font-size: 40px;
+}
+
+.scoreboard-container span {
+  justify-self: center;
+}
+
+.scoreboard {
+  background-color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.score {
+  width: 50%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score:nth-child(1) {
+  border-right: 1px solid;
+}
+
+@media screen and (max-width: 769px) {
+  .scoreboard-container {
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: 50px 80px;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .scoreboard-container {
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: 50px 70px;
+  }
+}

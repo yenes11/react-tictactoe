@@ -1,6 +1,6 @@
 import './App.css';
-import { Game } from './components/Game';
-import { Scoreboard } from './components/Scoreboard';
+import { Game } from './components/game/Game';
+import { Scoreboard } from './components/scoreboard/Scoreboard';
 import { GlobalProvider } from './context/GlobalState';
 
 function App() {

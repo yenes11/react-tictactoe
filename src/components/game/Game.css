@@ -1,0 +1,74 @@
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: 'Secular One', sans-serif;
+  font-size: 200px;
+  color: #fff;
+  background-color: #FFF;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+
+.play-ground {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  justify-items: center;
+  gap: 10px;
+}
+
+.reset {
+  width: 150px;
+  height: 60px;
+  border-radius: 5px;
+  font-size: 35px;
+  font-family: 'Abel', sans-serif;
+  background-color: #00e0c6;
+  color: #FFF;
+  border: none;
+}
+
+.reset:hover {
+  cursor: pointer;
+  background-color: #f54768;
+  color: #FFF;
+  transition: all .2s ease-in-out;
+}
+
+@media screen and (max-width: 769px) {
+  .play-ground {
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+  }
+  .square {
+    font-size: 140px;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .play-ground {
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+    gap: 5px;
+  }
+  .square {
+    font-size: 100px;
+  }
+
+  .reset {
+    width: 120px;
+    height: 40px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .play-ground {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
+}

@@ -1,0 +1,39 @@
+.alert {
+  width: 600px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: 'Abel', sans-serif;
+  font-size: 30px;
+}
+
+.pop-up {
+  bottom: 20px;
+  transition: .5s;
+}
+
+@media screen and (max-width: 769px) {
+  .alert {
+    width: 450px;
+    height: 60px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .alert {
+    width: 320px;
+    height: 45px;
+    font-size: 15px;
+  }
+}

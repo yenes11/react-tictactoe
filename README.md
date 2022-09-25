@@ -8,6 +8,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 <img src="docs/screenshots/screenshot2.png" width="800">
 
-<img src="docs/screenshots/screenshot3.png" width="400">
-
-<img src="docs/screenshots/screenshot4.png" width="400">
+<img src="docs/screenshots/screenshot3.png" width="400">  <img src="docs/screenshots/screenshot4.png" width="400">
